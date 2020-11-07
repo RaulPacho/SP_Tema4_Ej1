@@ -47,38 +47,41 @@ namespace SP_Tema4_Ej1
             {
                 throw new ArgumentException();
             }
-            do
+            while (opt != optName.Length)
             {
+                do
+                {
                     Console.WriteLine("___Menu___");
-                int i;
-                for (i = 1; i <= optName.Length; i ++)
+                    int i;
+                    for (i = 1; i <= optName.Length; i++)
+                    {
+                        Console.WriteLine(i + ". " + optName[i - 1]);
+                    }
+                    Console.WriteLine(i + ". We kiss in the cheeks and say goodbye.");
+                    Console.WriteLine("_Choose whisely..._");
+
+                    if (!int.TryParse(Console.ReadLine(), out opt))
+                    {
+                        opt = -2;
+                    }
+
+                    opt--;
+
+                    if (opt < 0 || opt > optName.Length)
+                    {
+                        Console.WriteLine("That... was a number out of range or even a freaking letter");
+                        fuckedUp = true;
+                    }
+                } while (fuckedUp);
+
+                if (optName.Length == opt)
                 {
-                    Console.WriteLine(i + ". " + optName[i-1]);
+                    Console.WriteLine("Oh... Okey... Hope I'll se you again... T-T");
                 }
-                Console.WriteLine(i + ". We kiss in the cheeks and say goodbye.");
-                Console.WriteLine("_Choose whisely..._");
-
-                if (!int.TryParse(Console.ReadLine(), out opt))
+                else
                 {
-                    opt = -2;
+                    del[opt]();
                 }
-
-                opt--;
-
-                if(opt < 0 || opt > optName.Length)
-                {
-                    Console.WriteLine("That... was a number out of range or even a freaking letter");
-                    fuckedUp = true;
-                }
-            } while (fuckedUp);
-
-            if(optName.Length == opt)
-            {
-                Console.WriteLine("Oh... Okey... Hope I'll se you again... T-T");
-            }
-            else
-            {
-                del[opt]();
             }
 
         }
