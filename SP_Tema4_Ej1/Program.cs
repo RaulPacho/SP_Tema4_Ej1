@@ -51,6 +51,7 @@ namespace SP_Tema4_Ej1
             {
                 do
                 {
+                    fuckedUp = false;
                     Console.WriteLine("___Menu___");
                     int i;
                     for (i = 1; i <= optName.Length; i++)
